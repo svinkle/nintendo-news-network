@@ -86,6 +86,16 @@ const CORS_PROXIES = [
 const feedCache = new Map();
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
+// Proxy external images to bypass hotlink protection
+function proxyImageUrl(imageUrl) {
+    if (!imageUrl || imageUrl.startsWith('images/')) {
+        return imageUrl; // Don't proxy local images
+    }
+
+    // Use corsproxy.io for images as it handles binary data well
+    return `https://corsproxy.io/?${encodeURIComponent(imageUrl)}`;
+}
+
 async function fetchRSSFeed(source) {
     // Check cache first
     const cacheKey = source.url;
@@ -680,7 +690,7 @@ async function loadNews() {
                     let articlesHtml = '<div class="articles">';
                     if (result.articles && result.articles.length > 0) {
                         result.articles.forEach(article => {
-                            const imageUrl = article.imageUrl || getPlaceholderImage();
+                            const imageUrl = proxyImageUrl(article.imageUrl) || getPlaceholderImage();
                             const isPlaceholder = !article.imageUrl;
                             articlesHtml += `
                                 <article>
