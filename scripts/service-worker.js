@@ -159,10 +159,13 @@ self.addEventListener('fetch', function(event) {
         event.respondWith(
             fetch(request)
                 .then(async function(response) {
-                    if (response.status === 200) {
+                    // Only cache successful responses
+                    if (response && response.ok) {
                         const responseForCache = response.clone();
                         caches.open(RSS_CACHE).then(async function(cache) {
                             cache.put(request, await addCacheTimestamp(responseForCache));
+                        }).catch(function() {
+                            // Ignore cache errors
                         });
                     }
                     return response;
@@ -170,7 +173,17 @@ self.addEventListener('fetch', function(event) {
                 .catch(function() {
                     // Fallback to cache when network fails
                     return caches.open(RSS_CACHE).then(function(cache) {
-                        return cache.match(request);
+                        return cache.match(request).then(function(cachedResponse) {
+                            // If no cached response, return a basic error response
+                            if (!cachedResponse) {
+                                return new Response('Network error', {
+                                    status: 408,
+                                    statusText: 'Request Timeout',
+                                    headers: { 'Content-Type': 'text/plain' }
+                                });
+                            }
+                            return cachedResponse;
+                        });
                     });
                 })
         );
