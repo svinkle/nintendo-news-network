@@ -111,8 +111,7 @@ self.addEventListener('fetch', function(event) {
 
                     return fetch(request).then(async function(networkResponse) {
                         if (networkResponse.status === 200) {
-                            const clonedResponse = networkResponse.clone();
-                            cache.put(request, await addCacheTimestamp(clonedResponse));
+                            cache.put(request, await addCacheTimestamp(networkResponse.clone()));
                         }
                         return networkResponse;
                     }).catch(function() {
@@ -137,8 +136,7 @@ self.addEventListener('fetch', function(event) {
 
                     return fetch(request).then(async function(networkResponse) {
                         if (networkResponse.status === 200) {
-                            const clonedResponse = networkResponse.clone();
-                            cache.put(request, await addCacheTimestamp(clonedResponse));
+                            cache.put(request, await addCacheTimestamp(networkResponse.clone()));
                         }
                         return networkResponse;
                     }).catch(function() {
@@ -161,8 +159,7 @@ self.addEventListener('fetch', function(event) {
                 .then(async function(response) {
                     if (response.status === 200) {
                         caches.open(RSS_CACHE).then(async function(cache) {
-                            const clonedResponse = response.clone();
-                            cache.put(request, await addCacheTimestamp(clonedResponse));
+                            cache.put(request, await addCacheTimestamp(response.clone()));
                         });
                     }
                     return response;
