@@ -4,19 +4,19 @@ const newsSources = [
         name: 'Nintendo Life',
         homepage: 'https://www.nintendolife.com/',
         url: 'https://www.nintendolife.com/feeds/latest',
-        color: '#e60012'
+        color: '#ff4d5a'
     },
     {
         name: 'Nintendo World Report',
         homepage: 'https://www.nintendoworldreport.com/',
         url: 'https://www.nintendoworldreport.com/rss',
-        color: '#2399cb'
+        color: '#4db8e8'
     },
     {
         name: 'Pure Nintendo',
         homepage: 'https://www.purenintendo.com/',
         url: 'https://www.purenintendo.com/feed',
-        color: '#d45500'
+        color: '#ff8c42'
     },
     {
         name: 'My Nintendo News',
@@ -27,7 +27,7 @@ const newsSources = [
     {
         name: 'GoNintendo',
         url: 'https://gonintendo.com/feeds/story.xml',
-        color: '#cb433f'
+        color: '#e96b67'
     },
     {
         name: 'Nintendo Everything',
@@ -45,7 +45,7 @@ const newsSources = [
         name: 'Nintendo Insider',
         homepage: 'https://www.nintendo-insider.com/',
         url: 'https://nintendo-insider.com/feed',
-        color: '#e91823'
+        color: '#ff4d5a'
     },
     {
         name: 'Nintendo Fuse',
@@ -57,13 +57,13 @@ const newsSources = [
         name: 'Nintendo Soup',
         homepage: 'https://nintendosoup.com/',
         url: 'https://nintendosoup.com/feed',
-        color: '#ff0c0c'
+        color: '#ff4d5a'
     },
     {
         name: 'Nintendojo',
         homepage: 'https://www.nintendojo.com/',
         url: 'https://www.nintendojo.com/feed',
-        color: '#f6024a'
+        color: '#ff5c7c'
     },
     {
         name: 'Nintendo Wire',

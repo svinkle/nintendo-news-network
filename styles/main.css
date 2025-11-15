@@ -128,7 +128,7 @@ section {
 
 .loading-spinner {
     font-size: 0.9em;
-    color: #888;
+    color: #aaa;
     animation: pulse 1.5s ease-in-out infinite;
 }
 
