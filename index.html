@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="color-scheme" content="dark">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Apple PWA Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Nintendo News">
+    <link rel="apple-touch-icon" href="images/icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="images/icon-192x192.png">
+
+    <!-- Microsoft PWA Support -->
+    <meta name="msapplication-TileColor" content="#1a1a2e">
+    <meta name="msapplication-TileImage" content="images/icon-144x144.png">
+    <meta name="msapplication-config" content="browserconfig.xml">
+
+    <title>Nintendo News Network - Latest Gaming News & Updates | Nintendo Switch, Games & More</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Get the latest Nintendo news, game reviews, and updates from top gaming sources. Stay informed about Nintendo Switch games, releases, and industry news all in one place.">
+    <meta name="keywords" content="Nintendo news, Nintendo Switch, gaming news, video games, game reviews, Nintendo Life, Nintendo World Report, game releases, gaming industry, Nintendo updates">
+    <meta name="author" content="Nintendo News Network">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://nintendo-news-network.com/">
+
+    <!-- Schema.org markup for better search results -->
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"Nintendo News Network","description":"Aggregated Nintendo gaming news from multiple trusted sources","url":"https://nintendo-news-network.com/","logo":{"@type":"ImageObject","url":"https://nintendo-news-network.com/images/icon-192x192.png"},"sameAs":["https://github.com/svinkle"],"mainEntity":{"@type":"WebSite","name":"Nintendo News Network","url":"https://nintendo-news-network.com/","potentialAction":{"@type":"SearchAction","target":"https://nintendo-news-network.com/?search={search_term_string}","query-input":"required name=search_term_string"}}}</script>
+
+    <!-- Optimized Favicons -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180x180.png">
+
+    <!-- Performance optimizations -->
+    <link rel="dns-prefetch" href="//api.codetabs.com">
+    <link rel="dns-prefetch" href="//corsproxy.io">
+    <link rel="dns-prefetch" href="//api.allorigins.win">
+    <link rel="dns-prefetch" href="//cors-anywhere.herokuapp.com">
+    <link rel="dns-prefetch" href="//thingproxy.freeboard.io">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="prefetch" href="images/icon-96x96.png">
+    <!-- Resource hints for better performance -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <!-- Non-blocking font loading for optimal performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&display=swap"></noscript>
+
+    <!-- Styles loaded asynchronously with cache version -->
+    <link rel="preload" href="styles/critical.css" as="style">
+    <link rel="stylesheet" href="styles/critical.css">
+    <link rel="preload" href="styles/main.css?v=2.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles/main.css?v=2.1"></noscript>
+
+    <!-- Open Graph / Twitter Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nintendo-news-network.com/">
+    <meta property="og:title" content="Nintendo News Network - Latest Gaming News & Updates">
+    <meta property="og:description" content="Get the latest Nintendo news, game reviews, and updates from top gaming sources. Stay informed about Nintendo Switch games and industry news.">
+    <meta property="og:image" content="https://nintendo-news-network.com/images/icon-512x512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:site_name" content="Nintendo News Network">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@svinkle">
+</head>
+<body>
+    <header>
+        <h1><span class="emoji-icon" aria-hidden="true">🎮</span> Nintendo News Network</h1>
+        <p class="subtitle">Your destination for Nintendo gaming news, reviews, and updates</p>
+    </header>
+    <div id="loading" class="loading">Loading latest Nintendo news...</div>
+    <main id="news-container"></main>
+    <footer>
+        <p>Made with <span role="img" aria-label="love">❤️</span> by <a href="https://github.com/svinkle" target="_blank" rel="noopener noreferrer">svinkle</a></p>
+        <p class="sources-credit">News aggregated from Nintendo Life, Nintendo World Report, Pure Nintendo, and other trusted gaming sources</p>
+    </footer>
+
+    <!-- JavaScript with optimized loading and minified files -->
+    <script src="scripts/app-init.min.js" defer></script>
+    <script src="scripts/main.min.js?v=2.1" defer></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./scripts/service-worker.min.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+
+</body>
+</html>

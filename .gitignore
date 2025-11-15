@@ -1,0 +1,26 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Development backup files
+scripts/dev-backup/
+
+# Performance testing files
+scripts/*test*.js
+scripts/*analyzer*.js
+scripts/*compression*.js
+
+# Build artifacts
+*.log
+.DS_Store
+.vscode/
+
+# Browser testing directories
+browsers/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Shell scripts
+*.sh
