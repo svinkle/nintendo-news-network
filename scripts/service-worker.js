@@ -80,10 +80,11 @@ function isCacheFresh(response, maxAge) {
 }
 
 // Add cache timestamp to response
-function addCacheTimestamp(response) {
+async function addCacheTimestamp(response) {
+    const blob = await response.blob();
     const newHeaders = new Headers(response.headers);
     newHeaders.set('sw-cache-time', Date.now().toString());
-    return new Response(response.body, {
+    return new Response(blob, {
         status: response.status,
         statusText: response.statusText,
         headers: newHeaders
@@ -102,15 +103,16 @@ self.addEventListener('fetch', function(event) {
 
     if (isStaticAsset) {
         event.respondWith(
-            caches.open(STATIC_CACHE).then(function(cache) {
-                return cache.match(request).then(function(cachedResponse) {
+            caches.open(STATIC_CACHE).then(async function(cache) {
+                return cache.match(request).then(async function(cachedResponse) {
                     if (cachedResponse && isCacheFresh(cachedResponse, CACHE_LIFETIMES.STATIC)) {
                         return cachedResponse;
                     }
 
-                    return fetch(request).then(function(networkResponse) {
+                    return fetch(request).then(async function(networkResponse) {
                         if (networkResponse.status === 200) {
-                            cache.put(request, addCacheTimestamp(networkResponse.clone()));
+                            const clonedResponse = networkResponse.clone();
+                            cache.put(request, await addCacheTimestamp(clonedResponse));
                         }
                         return networkResponse;
                     }).catch(function() {
@@ -127,15 +129,16 @@ self.addEventListener('fetch', function(event) {
         url.pathname.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i)) {
 
         event.respondWith(
-            caches.open(IMAGES_CACHE).then(function(cache) {
-                return cache.match(request).then(function(cachedResponse) {
+            caches.open(IMAGES_CACHE).then(async function(cache) {
+                return cache.match(request).then(async function(cachedResponse) {
                     if (cachedResponse && isCacheFresh(cachedResponse, CACHE_LIFETIMES.IMAGES)) {
                         return cachedResponse;
                     }
 
-                    return fetch(request).then(function(networkResponse) {
+                    return fetch(request).then(async function(networkResponse) {
                         if (networkResponse.status === 200) {
-                            cache.put(request, addCacheTimestamp(networkResponse.clone()));
+                            const clonedResponse = networkResponse.clone();
+                            cache.put(request, await addCacheTimestamp(clonedResponse));
                         }
                         return networkResponse;
                     }).catch(function() {
@@ -155,10 +158,11 @@ self.addEventListener('fetch', function(event) {
 
         event.respondWith(
             fetch(request)
-                .then(function(response) {
+                .then(async function(response) {
                     if (response.status === 200) {
-                        caches.open(RSS_CACHE).then(function(cache) {
-                            cache.put(request, addCacheTimestamp(response.clone()));
+                        caches.open(RSS_CACHE).then(async function(cache) {
+                            const clonedResponse = response.clone();
+                            cache.put(request, await addCacheTimestamp(clonedResponse));
                         });
                     }
                     return response;
