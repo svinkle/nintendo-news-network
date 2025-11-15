@@ -86,16 +86,6 @@ const CORS_PROXIES = [
 const feedCache = new Map();
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
-// Proxy external images to bypass hotlink protection
-function proxyImageUrl(imageUrl) {
-    if (!imageUrl || imageUrl.startsWith('images/')) {
-        return imageUrl; // Don't proxy local images
-    }
-
-    // Use corsproxy.io for images as it handles binary data well
-    return `https://corsproxy.io/?${encodeURIComponent(imageUrl)}`;
-}
-
 async function fetchRSSFeed(source) {
     // Check cache first
     const cacheKey = source.url;
@@ -610,7 +600,8 @@ function renderNewsSource(sourceData) {
             const imageUrl = article.imageUrl || getPlaceholderImage();
             const isPlaceholder = !article.imageUrl;
             // Simple error handling - just use placeholder on any error
-            const imageHtml = `<img src="${imageUrl}" alt="${isPlaceholder ? 'Nintendo News placeholder' : ''}" class="article-image${isPlaceholder ? ' placeholder-image' : ''}" loading="lazy" onerror="this.src='images/icon-96x96.png'; this.onerror=null;">`;            content += `
+            const imageHtml = `<img src="${imageUrl}" alt="${isPlaceholder ? 'Nintendo News placeholder' : ''}" class="article-image${isPlaceholder ? ' placeholder-image' : ''}" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='images/icon-96x96.png'; this.onerror=null;">`;
+            content += `
                 <article>
                     ${imageHtml}
                     <div class="article-content">
@@ -690,11 +681,11 @@ async function loadNews() {
                     let articlesHtml = '<div class="articles">';
                     if (result.articles && result.articles.length > 0) {
                         result.articles.forEach(article => {
-                            const imageUrl = proxyImageUrl(article.imageUrl) || getPlaceholderImage();
+                            const imageUrl = article.imageUrl || getPlaceholderImage();
                             const isPlaceholder = !article.imageUrl;
                             articlesHtml += `
                                 <article>
-                                    <img src="${imageUrl}" alt="${isPlaceholder ? 'Nintendo News placeholder' : ''}" class="article-image${isPlaceholder ? ' placeholder-image' : ''}" loading="lazy" width="80" height="80" onerror="this.src='images/icon-96x96.png'; this.onerror=null;">
+                                    <img src="${imageUrl}" alt="${isPlaceholder ? 'Nintendo News placeholder' : ''}" class="article-image${isPlaceholder ? ' placeholder-image' : ''}" loading="lazy" width="80" height="80" referrerpolicy="no-referrer" onerror="this.src='images/icon-96x96.png'; this.onerror=null;">
                                     <div class="article-content">
                                         <h3 class="article-title">
                                             <a href="${article.link}" target="_blank">
