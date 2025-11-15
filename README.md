@@ -2,8 +2,6 @@
 
 A high-performance Progressive Web App (PWA) that aggregates Nintendo gaming news from multiple trusted sources. Built with modern web technologies and optimized for speed, accessibility, and user experience.
 
-![Nintendo News Network](./images/icon-192x192.png)
-
 ## ✨ Features
 
 - **📱 Progressive Web App**: Installable on all devices with offline support
@@ -14,9 +12,9 @@ A high-performance Progressive Web App (PWA) that aggregates Nintendo gaming new
 - **♿ Accessibility First**: Perfect accessibility scores and semantic HTML
 - **🔍 SEO Optimized**: Schema.org structured data and comprehensive meta tags
 
-## 🚀 Live Demo
+## 🚀 LivSite
 
-Visit the live site: [Nintendo News Network](https://your-domain.com) *(Update with your deployment URL)*
+Visit the live site: [Nintendo News Network](https://nintendonewsnetwork.com/)
 
 ## 📊 Performance Metrics
 
