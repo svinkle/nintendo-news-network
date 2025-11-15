@@ -30,14 +30,14 @@ function initializeServiceWorker() {
         window.addEventListener('load', function() {
             navigator.serviceWorker.register('scripts/service-worker.js')
                 .then(function(registration) {
-                    console.log('ServiceWorker registered: ', registration.scope);
+                    // ServiceWorker registered successfully
                 })
                 .catch(function(registrationError) {
-                    console.log('ServiceWorker registration failed: ', registrationError);
+                    // ServiceWorker registration failed
                 });
         });
     } else if (window.location.protocol === 'file:') {
-        console.log('ServiceWorker not available for file:// protocol. Use a web server for full functionality.');
+        // ServiceWorker not available for file:// protocol
     }
 }
 
@@ -46,17 +46,11 @@ function initializePerformanceMonitoring() {
     window.addEventListener('load', function() {
         if ('performance' in window) {
             setTimeout(function() {
+                // Performance metrics collected
                 const perfData = performance.getEntriesByType('navigation')[0];
-                console.log('🚀 Performance Metrics:');
-                console.log('📊 DOM Content Loaded:', Math.round(perfData.domContentLoadedEventEnd - perfData.navigationStart), 'ms');
-                console.log('📊 Page Load Complete:', Math.round(perfData.loadEventEnd - perfData.navigationStart), 'ms');
-
                 const paintEntries = performance.getEntriesByType('paint');
                 const fp = paintEntries.find(entry => entry.name === 'first-paint');
                 const fcp = paintEntries.find(entry => entry.name === 'first-contentful-paint');
-
-                console.log('📊 First Paint:', fp ? Math.round(fp.startTime) + 'ms' : 'N/A');
-                console.log('📊 First Contentful Paint:', fcp ? Math.round(fcp.startTime) + 'ms' : 'N/A');
             }, 1000);
         }
     });

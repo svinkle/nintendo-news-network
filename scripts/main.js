@@ -100,8 +100,6 @@ async function fetchRSSFeed(source) {
     for (let i = 0; i < CORS_PROXIES.length; i++) {
         try {
             const proxy = CORS_PROXIES[i];
-            console.log(`🔄 Trying proxy ${i + 1}/${CORS_PROXIES.length} for ${source.name}`);
-
             const proxyUrl = `${proxy}${encodeURIComponent(source.url)}`;
 
             // Add timeout to prevent hanging requests
@@ -254,11 +252,9 @@ async function fetchRSSFeed(source) {
                 timestamp: Date.now()
             });
 
-            console.log(`✅ Successfully loaded ${articles.length} articles from ${source.name} via proxy ${i + 1}`);
             return result;        } catch (error) {
             lastError = error;
-            // Log error for debugging but continue to next proxy
-            console.warn(`❌ Proxy ${i + 1} failed for ${source.name}:`, error.message);
+            // Continue to next proxy on error
         }
     }
 
@@ -268,7 +264,6 @@ async function fetchRSSFeed(source) {
         ? `${source.name}: CORS blocked (try hosting on a web server)`
         : `${source.name}: All proxy servers failed - ${lastError?.message || 'Unknown error'}`;
 
-    console.log(`🚫 All proxies failed for ${source.name}. Showing error state.`);
     return {
         source: source,
         articles: [],
@@ -756,14 +751,12 @@ let deferredPrompt;
 let installButton;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('PWA install prompt available');
     e.preventDefault();
     deferredPrompt = e;
     showInstallButton();
 });
 
 window.addEventListener('appinstalled', () => {
-    console.log('PWA was installed');
     hideInstallButton();
     deferredPrompt = null;
 });
@@ -791,7 +784,6 @@ async function installPWA() {
     if (deferredPrompt) {
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response to the install prompt: ${outcome}`);
         deferredPrompt = null;
         hideInstallButton();
     }
@@ -802,11 +794,10 @@ function initializeApp() {
     // Use requestIdleCallback for non-critical operations
     if ('requestIdleCallback' in window) {
         requestIdleCallback(() => {
-            console.log('Nintendo News Network initialized');
             // Pre-warm the feed cache in background
             setTimeout(() => {
                 if (navigator.onLine) {
-                    console.log('Pre-warming feed cache...');
+                    // Pre-warming feed cache
                 }
             }, 2000);
 
@@ -844,8 +835,7 @@ function reportCachePerformance() {
         const cachedResources = resourceEntries.filter(entry =>
             entry.transferSize === 0 && entry.decodedBodySize > 0
         );
-
-        console.log(`📊 Cache Performance: ${cachedResources.length}/${resourceEntries.length} resources served from cache`);
+        // Cache performance metrics collected
     }
 }
 

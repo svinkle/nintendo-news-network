@@ -42,15 +42,13 @@ const STATIC_ASSETS = [
 
 // Install event - cache static assets with efficient caching
 self.addEventListener('install', function(event) {
-    console.log('Service Worker installing...');
     event.waitUntil(
         caches.open(STATIC_CACHE)
             .then(function(cache) {
-                console.log('Caching static assets with long-term cache');
                 return cache.addAll(STATIC_ASSETS);
             })
             .catch(function(error) {
-                console.log('Cache installation failed:', error);
+                // Cache installation failed
             })
     );
     self.skipWaiting(); // Activate immediately
@@ -64,7 +62,6 @@ self.addEventListener('activate', function(event) {
                 cacheNames.map(function(cacheName) {
                     // Delete any cache that doesn't match current version
                     if (!cacheName.includes('v3')) {
-                        console.log('Deleting old cache:', cacheName);
                         return caches.delete(cacheName);
                     }
                 })
@@ -208,11 +205,10 @@ async function cleanupExpiredCache() {
                 const response = await cache.match(request);
                 if (response && !isCacheFresh(response, maxAge)) {
                     await cache.delete(request);
-                    console.log('Cleaned expired cache entry:', request.url);
                 }
             }
         } catch (error) {
-            console.log('Cache cleanup error:', error);
+            // Cache cleanup error
         }
     }
 }
