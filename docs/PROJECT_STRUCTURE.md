@@ -5,7 +5,7 @@
 The project has been reorganized into a clean, maintainable structure that separates different types of files into logical directories:
 
 ```
-nintendo-news/
+nintendo-news-network/
 ├── index.html                 # Main entry point
 ├── manifest.json             # PWA manifest
 ├── browserconfig.xml         # Microsoft browser configuration

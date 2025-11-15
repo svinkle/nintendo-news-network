@@ -110,7 +110,7 @@ async function fetchRSSFeed(source) {
                 signal: controller.signal,
                 headers: {
                     'Accept': 'application/rss+xml, application/xml, text/xml, */*',
-                    'Origin': window.location.origin || 'https://nintendo-news-network.com'
+                    'Origin': window.location.origin || 'https://nintendonewsnetwork.com'
                 }
             });
 

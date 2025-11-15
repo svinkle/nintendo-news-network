@@ -38,7 +38,7 @@
 
 ### **Directory Structure**
 ```
-nintendo-news/
+nintendo-news-network/
 ├── index.html              # Single optimized entry point ⭐
 ├── manifest.json           # PWA manifest
 ├── browserconfig.xml       # Microsoft PWA config

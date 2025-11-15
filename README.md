@@ -35,7 +35,7 @@ Visit the live site: [Nintendo News Network](https://nintendonewsnetwork.com/)
 ## 📁 Project Structure
 
 ```
-nintendo-news/
+nintendo-news-network/
 ├── index.html              # Main application entry point
 ├── manifest.json           # PWA manifest
 ├── browserconfig.xml       # Microsoft PWA configuration
@@ -70,8 +70,8 @@ nintendo-news/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/nintendo-news.git
-   cd nintendo-news
+   git clone https://github.com/svinkle/nintendo-news-network.git
+   cd nintendo-news-network
    ```
 
 2. **Serve locally**
@@ -236,7 +236,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/nintendo-news/issues)
+- **Issues**: [GitHub Issues](https://github.com/svinkle/nintendo-news-network/issues)
 - **Documentation**: See `/docs` directory
 - **Performance**: 100/100 Lighthouse score guaranteed
 
