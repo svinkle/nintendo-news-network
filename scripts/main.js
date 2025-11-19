@@ -750,49 +750,6 @@ async function loadNews() {
     }
 }
 
-// PWA Installation handling
-let deferredPrompt;
-let installButton;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    showInstallButton();
-});
-
-window.addEventListener('appinstalled', () => {
-    hideInstallButton();
-    deferredPrompt = null;
-});
-
-function showInstallButton() {
-    if (!installButton) {
-        installButton = document.createElement('button');
-        installButton.textContent = '📱 Install App';
-        installButton.className = 'install-button';
-        installButton.onclick = installPWA;
-
-        const header = document.querySelector('header');
-        header.appendChild(installButton);
-    }
-}
-
-function hideInstallButton() {
-    if (installButton) {
-        installButton.remove();
-        installButton = null;
-    }
-}
-
-async function installPWA() {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        deferredPrompt = null;
-        hideInstallButton();
-    }
-}
-
 // Performance optimized initialization
 function initializeApp() {
     // Use requestIdleCallback for non-critical operations

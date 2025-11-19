@@ -290,27 +290,3 @@ footer a {
         padding: 20px;
     }
 }
-
-/* PWA Install Button */
-.install-button {
-    background: linear-gradient(45deg, #e60012, #ff4d4d);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-size: 0.7em;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(230, 0, 18, 0.3);
-}
-
-.install-button:hover {
-    background: linear-gradient(45deg, #ff4d4d, #e60012);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(230, 0, 18, 0.4);
-}
-
-.install-button:active {
-    transform: translateY(0);
-}
