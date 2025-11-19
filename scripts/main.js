@@ -36,8 +36,8 @@ const newsSources = [
         color: '#00bff3'
     },
     {
-        name: 'IGN Nintendo',
-        homepage: 'https://www.ign.com/',
+        name: 'IGN (Nintendo)',
+        homepage: 'https://www.ign.com/nintendo',
         url: 'https://www.ign.com/rss/v2/articles/feed?channel=nintendo',
         color: '#FFFFFF'
     },
@@ -506,8 +506,8 @@ function fixTextEncoding(text) {
 }
 
 function getPlaceholderImage() {
-    // Use controller-based icon as placeholder - relative path for file protocol compatibility
-    return 'images/icon-96x96.png';
+    // Return empty string to indicate placeholder should be a div
+    return '';
 }
 
 function cleanDescription(description) {
@@ -597,10 +597,11 @@ function renderNewsSource(sourceData) {
     } else {
         content += '<div class="articles">';
         articles.forEach(article => {
-            const imageUrl = article.imageUrl || getPlaceholderImage();
             const isPlaceholder = !article.imageUrl;
-            // Simple error handling - just use placeholder on any error
-            const imageHtml = `<img src="${imageUrl}" alt="${isPlaceholder ? 'Nintendo News placeholder' : ''}" class="article-image${isPlaceholder ? ' placeholder-image' : ''}" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='images/icon-96x96.png'; this.onerror=null;">`;
+            // Use div spacer for placeholder, img for real images
+            const imageHtml = isPlaceholder
+                ? `<div class="article-image placeholder-spacer" aria-hidden="true"></div>`
+                : `<img src="${article.imageUrl}" alt="" class="article-image" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<div class=&quot;article-image placeholder-spacer&quot; aria-hidden=&quot;true&quot;></div>';">`;
             content += `
                 <article>
                     ${imageHtml}
@@ -681,11 +682,13 @@ async function loadNews() {
                     let articlesHtml = '<div class="articles">';
                     if (result.articles && result.articles.length > 0) {
                         result.articles.forEach(article => {
-                            const imageUrl = article.imageUrl || getPlaceholderImage();
                             const isPlaceholder = !article.imageUrl;
+                            const imageHtml = isPlaceholder
+                                ? `<div class="article-image placeholder-spacer" aria-hidden="true"></div>`
+                                : `<img src="${article.imageUrl}" alt="" class="article-image" loading="lazy" width="80" height="80" referrerpolicy="no-referrer" onerror="this.outerHTML='<div class=&quot;article-image placeholder-spacer&quot; aria-hidden=&quot;true&quot;></div>';">`;
                             articlesHtml += `
                                 <article>
-                                    <img src="${imageUrl}" alt="${isPlaceholder ? 'Nintendo News placeholder' : ''}" class="article-image${isPlaceholder ? ' placeholder-image' : ''}" loading="lazy" width="80" height="80" referrerpolicy="no-referrer" onerror="this.src='images/icon-96x96.png'; this.onerror=null;">
+                                    ${imageHtml}
                                     <div class="article-content">
                                         <h3 class="article-title">
                                             <a href="${article.link}" target="_blank">

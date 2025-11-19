@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#1a1a2e">
+    <meta name="theme-color" content="#0a0a0a">
     <meta name="color-scheme" content="dark">
     <meta name="google-adsense-account" content="ca-pub-7464712251216686">
 
@@ -13,13 +13,13 @@
     <!-- Apple PWA Support -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Nintendo News">
+    <meta name="apple-mobile-web-app-title" content="Nintendo News Network">
     <link rel="apple-touch-icon" href="images/icon-180x180.png">
     <link rel="apple-touch-icon" sizes="152x152" href="images/icon-152x152.png">
     <link rel="apple-touch-icon" sizes="192x192" href="images/icon-192x192.png">
 
     <!-- Microsoft PWA Support -->
-    <meta name="msapplication-TileColor" content="#1a1a2e">
+    <meta name="msapplication-TileColor" content="#0a0a0a">
     <meta name="msapplication-TileImage" content="images/icon-144x144.png">
     <meta name="msapplication-config" content="browserconfig.xml">
 
@@ -52,14 +52,14 @@
     <meta http-equiv="x-dns-prefetch-control" content="on">
 
     <!-- Non-blocking font loading for optimal performance -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"></noscript>
 
     <!-- Styles loaded asynchronously with cache version -->
     <link rel="preload" href="styles/critical.css" as="style">
     <link rel="stylesheet" href="styles/critical.css">
-    <link rel="preload" href="styles/main.css?v=2.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles/main.css?v=2.1"></noscript>
+    <link rel="preload" href="styles/main.css?v=2.4" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles/main.css?v=2.4"></noscript>
 
     <!-- Open Graph / Twitter Meta Tags -->
     <meta property="og:type" content="website">
@@ -85,8 +85,9 @@
 </head>
 <body>
     <header>
-        <h1><span class="emoji-icon" aria-hidden="true">🎮</span> Nintendo News Network</h1>
-        <p class="subtitle">Your destination for Nintendo gaming news, reviews, and updates</p>
+        <h1>
+            <img src="images/logo.svg" alt="Nintendo News Network" role="img" class="logo-svg">
+        </h1>
     </header>
     <div id="loading" class="loading">Loading latest Nintendo news...</div>
     <main id="news-container"></main>
@@ -96,8 +97,8 @@
     </footer>
 
     <!-- JavaScript with optimized loading and minified files -->
-    <script src="scripts/app-init.min.js" defer></script>
-    <script src="scripts/main.min.js?v=2.1" defer></script>
+    <script src="scripts/app-init.min.js?v=2.2" defer></script>
+    <script src="scripts/main.min.js?v=2.2" defer></script>
 
     <!-- Service Worker Registration -->
     <script>

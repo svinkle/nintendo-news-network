@@ -6,7 +6,6 @@
 
 /* Optimize font loading and prevent layout shifts */
 @font-face {
-    font-family: "Press Start 2P";
     font-display: optional; /* Prevents layout shifts */
     size-adjust: 100%;
 }
@@ -24,7 +23,7 @@ body {
     font-style: normal;
     font-variation-settings: "wdth" 100;
     line-height: 1.6;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     min-height: 100vh;
     padding: 20px;
     color: #f0f0f0;
@@ -38,27 +37,7 @@ header {
     text-align: center;
     margin: 0 auto 30px auto;
     max-width: 1400px;
-    background: #2d2d44;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border: 1px solid #444;
-}
-
-header h1 {
-    font-family: "Press Start 2P", system-ui;
-    font-weight: 400;
-    font-style: normal;
-    color: #ff4d4d;
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-header .subtitle {
-    color: #d0d0d0;
-    font-size: 1.1em;
-    margin: 0;
+    padding: 45px;
 }
 
 #loading {
@@ -104,22 +83,22 @@ main {
 }
 
 section {
-    background: #2d2d44;
+    background: #1a1a1a;
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #444;
+    border: 1px solid #333;
     /* Prevent layout shifts */
     min-height: 400px;
     contain: layout;
 }
 
 .loading-placeholder {
-    background: #2d2d44;
+    background: #1a1a1a;
     border-radius: 15px;
     padding: 25px;
-    border: 1px solid #444;
+    border: 1px solid #333;
     /* Match final section dimensions exactly */
     min-height: 400px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -147,12 +126,11 @@ section {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 2px solid #444;
+    border-bottom: 2px solid #333;
 }
 
 h2.source-name {
-    font-family: "Press Start 2P", system-ui;
-    font-weight: 400;
+    font-weight: 900;
     font-style: normal;
     font-size: 1em;
     flex: 1;
@@ -182,7 +160,7 @@ h3.article-title {
 }
 
 .articles::-webkit-scrollbar-track {
-    background: #3a3a3a;
+    background: #2a2a2a;
     border-radius: 10px;
 }
 
@@ -193,7 +171,7 @@ h3.article-title {
 
 article {
     padding: 15px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #333;
     transition: background-color 0.2s ease;
     display: flex;
     gap: 15px;
@@ -205,7 +183,7 @@ article:last-child {
 }
 
 article:hover {
-    background-color: #3a3a50;
+    background-color: #252525;
 }
 
 .article-image {
@@ -214,7 +192,7 @@ article:hover {
     object-fit: cover;
     border-radius: 8px;
     flex-shrink: 0;
-    background: #444;
+    background: #333;
     /* Prevent layout shifts during image loading */
     display: block;
     contain: layout;
@@ -224,9 +202,9 @@ article:hover {
     -webkit-backface-visibility: hidden;
 }
 
-.placeholder-image {
-    background: #2d2d44;
-    padding: 4px;
+.placeholder-spacer {
+    background: transparent;
+    border: 1px solid #444;
 }
 
 .article-content {
@@ -320,7 +298,6 @@ footer a {
     border: none;
     padding: 12px 24px;
     border-radius: 25px;
-    font-family: "Press Start 2P", system-ui;
     font-size: 0.7em;
     cursor: pointer;
     margin-top: 15px;
