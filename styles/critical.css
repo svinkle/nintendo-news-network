@@ -35,12 +35,6 @@ header h1 {
     justify-content: center;
 }
 
-.logo-svg {
-    max-width: 100%;
-    height: auto;
-    max-height: 80px;
-}
-
 .subtitle {
     color: #d0d0d0;
     font-size: 1.1em;
