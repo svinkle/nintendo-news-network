@@ -1,6 +1,6 @@
 {
   "name": "Nintendo News Network",
-  "short_name": "Nintendo News",
+  "short_name": "N3",
   "description": "Your destination for the latest Nintendo gaming news, reviews, and updates from trusted sources",
   "start_url": "/",
   "display": "standalone",
@@ -9,7 +9,6 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
-  "categories": ["news", "games", "entertainment"],
   "icons": [
     {
       "src": "/images/icon-72x72.png",
@@ -58,36 +57,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Nintendo Switch News",
-      "short_name": "Switch News",
-      "description": "Latest Nintendo Switch game news and updates",
-      "url": "/?filter=switch",
-      "icons": [{ "src": "/images/icon-192x192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Game Reviews",
-      "short_name": "Reviews",
-      "description": "Nintendo game reviews and ratings",
-      "url": "/?filter=reviews",
-      "icons": [{ "src": "/images/icon-192x192.png", "sizes": "192x192" }]
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshot-narrow.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow"
     }
   ]
 }
